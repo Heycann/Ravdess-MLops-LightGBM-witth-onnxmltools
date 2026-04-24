@@ -1,0 +1,20 @@
+stages:
+  preprocess:
+    cmd: python src/preprocess.py --raw data/raw/RAVDESS --out data/processed
+    deps:
+      - data/raw/RAVDESS/
+      - src/preprocess.py
+    outs:
+      - data/processed/train.parquet
+      - data/processed/val.parquet
+      - data/processed/test.parquet
+
+  train:
+    cmd: python src/train.py
+    deps:
+      - data/processed/train.parquet
+      - data/processed/val.parquet
+      - src/train.py
+    outs:
+      - models/lgbm_model.onnx
+      - models/lgbm_model.pkl
