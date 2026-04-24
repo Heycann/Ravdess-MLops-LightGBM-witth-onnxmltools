@@ -1,1 +1,7 @@
-/features.csv
+﻿.venv/
+__pycache__/
+*.pyc
+.vscode/
+mlruns/
+*.parquet
+.dvc/cache/
